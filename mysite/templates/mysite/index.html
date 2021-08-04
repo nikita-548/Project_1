@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Collection of Zip Files</title>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    </head>
+    <body class="m-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <div class="form-group m-5">
+                                <label>Zip File Name</label>
+                                <input required name="zip_file_name" type="text" class="form-control">
+                            </div>
+                            <div class="form-group m-5">
+                                <label>Crontab Text</label>
+                                <textarea required name="crontab_text" rows="25" class="form-control">{{ crontab_pattern_text }}</textarea>
+                            </div>
+                            <div class="form-group m-5">
+                                <label>Upload Zip</label>
+                                <!--<input required name="music_file" type="file" class="form-control-file">-->
+                                {{ music_file_form }}
+                            </div>
+                            <button type="submit" class="btn btn-primary m-3">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                <div class="row">
+                    {% for file in uploaded_zip_files %}
+                        <div class="col-md-6">
+                            <div class="card border-dark my-2">
+                                <div class="card-body">
+                                 <h5 class="card-title">{{ file }}</h5>
+                                 <a href="" class="btn btn-info">View the content</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
