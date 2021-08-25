@@ -35,12 +35,12 @@
                 </div>
                 <div class="col-md-6">
                 <div class="row">
-                    {% for file in uploaded_zip_files %}
+                    {% for zip_file in uploaded_zip_files %}
                         <div class="col-md-6">
                             <div class="card border-dark my-2">
                                 <div class="card-body">
-                                 <h5 class="card-title">{{ file }}</h5>
-                                 <a href="" class="btn btn-info">View the content</a>
+                                    <h4 class="card-title">{{ zip_file }}</h4>
+                                    <a href="{% url 'content' zip_file.id %}" class="btn btn-info">View the content</a>
                                 </div>
                             </div>
                         </div>
